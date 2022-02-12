@@ -1,6 +1,10 @@
 name: health report
 
 on:
+  push:
+    branches: [ main ] 
+  pull_request:
+    branches: [ main ]
   schedule:
     # * is a special character in YAML so you have to quote this string
     - cron:  '30 0 * * *'
@@ -11,7 +15,7 @@ jobs:
     runs-on: windows-latest
     steps:
     - name: Health Report
-      uses: Editst/SYSU-HealthReport@master
+      uses: Editi0/SYSU-HealthReport@master
       with:
         netid: ${{secrets.NETID}}
         password: ${{secrets.PASSWORD}}
